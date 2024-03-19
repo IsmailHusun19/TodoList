@@ -14,7 +14,8 @@ const List = ({ todo, deleteTodo, doneTodo, editTodo, editTodoValue }) => {
         <div className='container-listTodo' >
             {todo.map((todo, index) => (
                 <div className='listTodo' key={index}>
-                    <input type="text" autoFocus className={`todo-item ${todo[0].status ? "coret" : ''} ${todo[0].setEdit ? "editing" : ''}`} disabled={todo[0].setEdit ? null : 'disabled'} defaultValue={todo[0].todo} onChange={(e) => edit(e)} />
+                    {console.log(todo)}
+                    <input type="text" autoFocus className={`todo-item ${todo[0].status ? "coret" : ''} ${todo[0].setEdit ? "editing" : ''}`} disabled={todo[0].setEdit ? null : 'disabled'} value={todo[0].todo} onChange={(e) => edit(e)} />
                     <FontAwesomeIcon className={todo[0].status ? "icon" : "icon icon-1"} icon={todo[0].status ? faArrowRotateLeft : faCheck} onClick={() => doneTodo(todo[0].id)} />
                     <FontAwesomeIcon className='icon' icon={todo[0].setEdit ? faPaperPlane : faPen} onClick={() => editTodo(todo[0].id)}/>
                     <FontAwesomeIcon className='icon' icon={faTrash} onClick={() => deleteTodo(todo[0].id)} />
