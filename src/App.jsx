@@ -61,7 +61,6 @@ function App() {
     const storedTodos = JSON.parse(localStorage.getItem('todos'));
     if (storedTodos) {
       const updatedTodos = storedTodos.filter(todo => todo[0].id !== id);
-      location.reload();
       setDataTodos(updatedTodos);
     }
   }
@@ -91,9 +90,11 @@ function App() {
             todo[0].setEdit = true;
           }
         }else {
+          todo[0].setEdit = false;
           if (todo[0].id === id){
             getValue.length > 0 ? todo[0].todo = getValue : undefined;
             todo[0].setEdit = false;
+            setValue('');
           }
         }
       });
@@ -110,7 +111,7 @@ function App() {
       <div className='todoList'>
         <div className='judul'><h1>Todo List</h1></div>
         <Form btnAdd={btnAdd} value={(e) => setData(e)} setValue={getData} />
-        <List todo={getDataTodos} deleteTodo={(id) => deleteTodo(id)} doneTodo={(id) => doneTodo(id)} editTodo={(id) => editTodo(id)} editTodoValue={(value) => editTodoValue(value)} />
+        <List todo={getDataTodos} deleteTodo={(id) => deleteTodo(id)} doneTodo={(id) => doneTodo(id)} editTodo={(id) => editTodo(id)} editTodoValue={(value) => editTodoValue(value)} getvalue={getValue} />
       </div>
     </div>
   )
