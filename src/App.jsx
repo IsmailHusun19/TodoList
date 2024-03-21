@@ -61,6 +61,7 @@ function App() {
     const storedTodos = JSON.parse(localStorage.getItem('todos'));
     if (storedTodos) {
       const updatedTodos = storedTodos.filter(todo => todo[0].id !== id);
+      location.reload();
       setDataTodos(updatedTodos);
     }
   }
@@ -101,7 +102,7 @@ function App() {
   }
 
   const editTodoValue = (value) => {
-    return setValue(value)
+    setValue(value)
   }
 
   return (

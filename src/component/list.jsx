@@ -12,13 +12,12 @@ const List = ({ todo, deleteTodo, doneTodo, editTodo, editTodoValue }) => {
 
     return (
         <div className='container-listTodo' >
-            {todo.map((todo, index) => (
+            {todo.map((todoItem, index) => (
                 <div className='listTodo' key={index}>
-                    {console.log(todo)}
-                    <input type="text" autoFocus className={`todo-item ${todo[0].status ? "coret" : ''} ${todo[0].setEdit ? "editing" : ''}`} disabled={todo[0].setEdit ? null : 'disabled'} value={todo[0].todo} onChange={(e) => edit(e)} />
-                    <FontAwesomeIcon className={todo[0].status ? "icon" : "icon icon-1"} icon={todo[0].status ? faArrowRotateLeft : faCheck} onClick={() => doneTodo(todo[0].id)} />
-                    <FontAwesomeIcon className='icon' icon={todo[0].setEdit ? faPaperPlane : faPen} onClick={() => editTodo(todo[0].id)}/>
-                    <FontAwesomeIcon className='icon' icon={faTrash} onClick={() => deleteTodo(todo[0].id)} />
+                    <input type="text" autoFocus className={`todo-item ${todoItem[0].status ? "coret" : ''} ${todoItem[0].setEdit ? "editing" : ''}`} disabled={todoItem[0].setEdit ? null : 'disabled'} defaultValue={todoItem[0].todo} onChange={(e) => edit(e)} />
+                    <FontAwesomeIcon className={todoItem[0].status ? "icon" : "icon icon-1"} icon={todoItem[0].status ? faArrowRotateLeft : faCheck} onClick={() => doneTodo(todoItem[0].id)} />
+                    <FontAwesomeIcon className='icon' icon={todoItem[0].setEdit ? faPaperPlane : faPen} onClick={() => editTodo(todoItem[0].id)}/>
+                    <FontAwesomeIcon className='icon' icon={faTrash} onClick={() => deleteTodo(todoItem[0].id)} />
                 </div>
             ))}
         </div>
